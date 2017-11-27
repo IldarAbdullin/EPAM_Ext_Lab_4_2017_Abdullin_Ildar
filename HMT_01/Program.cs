@@ -19,7 +19,6 @@ namespace HMT_01
 
 
 
-
         static void Main(string[] args)
         {
             int flag = 1;
@@ -39,34 +38,34 @@ namespace HMT_01
                 switch (figure)
                 {
                     case "а":
-                        OwnA(x, y);
+                        OwnA(x, y, figure);
                         break;
                     case "б":
-                        OwnB(x, y);
+                        OwnB(x, y, figure);
                         break;
                     case "в":
-                        OwnV(x, y);
+                        OwnV(x, y, figure);
                         break;
                     case "г":
-                        OwnG(x, y);
+                        OwnG(x, y, figure);
                         break;
                     case "д":
-                        OwnD(x, y);
+                        OwnD(x, y, figure);
                         break;
                     case "е":
-                        OwnE(x, y);
+                        OwnE(x, y, figure);
                         break;
                     case "ж":
-                        OwnZH(x, y);
+                        OwnZH(x, y, figure);
                         break;
                     case "з":
-                        OwnZ(x, y);
+                        OwnZ(x, y, figure);
                         break;
                     case "и":
-                        OwnI(x, y);
+                        OwnI(x, y, figure);
                         break;
                     case "к":
-                        OwnK(x, y);
+                        OwnK(x, y, figure);
                         break;
                 }
 
@@ -79,19 +78,31 @@ namespace HMT_01
 
         }
 
-        private static void OwnK(double x, double y)
+        private static void Message(double x, double y, string figure, bool flag)
+        {
+            if (flag)
+            {
+                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [{2}]", x, y, figure);
+            }
+            else
+            {
+                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [{2}]", x, y, figure);
+            }
+        }
+
+        private static void OwnK(double x, double y, string figure)
         {
             int flag = 0;
             if (y >= 1)
             {
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [к]", x, y);
+                Message(x, y, figure, true);
                 flag = 1;
             }
             else
             {
                 if ((x >= -y) && (x <= y))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [и]", x, y);
+                    Message(x, y, figure, false);
                     flag = 1;
                 }
 
@@ -99,18 +110,18 @@ namespace HMT_01
 
             if (flag == 0)
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [з]", x, y);
+                Message(x, y, figure, false);
             }
         }
 
-        private static void OwnI(double x, double y)
+        private static void OwnI(double x, double y, string figure)
         {
             int flag = 0;
             if (y <= 0)
             {
-                if ((x >= (y-3)/2) && (x <= 3*y + 1))
+                if ((x >= (y - 3) / 2) && (x <= 3 * y + 1))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [и]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
             }
@@ -118,28 +129,26 @@ namespace HMT_01
             {
                 if ((x >= (y - 3) / 2) && (x <= -y))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [и]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
-
-
 
             }
 
             if (flag == 0)
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [з]", x, y);
+                Message(x, y, figure, false);
             }
         }
 
-        private static void OwnZ(double x, double y)
+        private static void OwnZ(double x, double y, string figure)
         {
             int flag = 0;
             if (y <= 0)
             {
                 if ((y >= -2) && (Math.Abs(x) <= 1))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [з]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
             }
@@ -149,7 +158,7 @@ namespace HMT_01
                 {
                     if (IsInTriangle(0, 0, -1, 1, -1, 0, x, y))
                     {
-                        Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [з]", x, y);
+                        Message(x, y, figure, true);
                         flag = 1;
                     }
                 }
@@ -157,7 +166,7 @@ namespace HMT_01
                 {
                     if (IsInTriangle(0, 0, 1, 1, 1, 0, x, y))
                     {
-                        Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [з]", x, y);
+                        Message(x, y, figure, true);
                         flag = 1;
                     }
                 }
@@ -165,11 +174,11 @@ namespace HMT_01
 
             if (flag == 0)
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [з]", x, y);
+                Message(x, y, figure, false);
             }
         }
 
-        //Метод принимает точку (x,y), три вершины треугольник и проверяет принадлежность точки, данному треугольнику
+        //Метод принимает точку (x,y), три вершины треугольник  и проверяет принадлежность точки, данному треугольнику
         private static bool IsInTriangle(double x1, double y1, double x2, double y2, double x3, double y3, double x, double y)
         {
             double k, m, n;
@@ -187,28 +196,28 @@ namespace HMT_01
         }
 
 
-        private static void OwnZH(double x, double y)
+        private static void OwnZH(double x, double y, string figure)
         {
             int flag = 0;
 
             if ((y <= 2) && (y >= -1))
             {
-                if ((x <= (-y/2) + 1) && (x >= (y / 2) - 1))
+                if ((x <= (-y / 2) + 1) && (x >= (y / 2) - 1))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [з]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
-                
+
             }
 
             if (flag == 0)
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [з]", x, y);
+                Message(x, y, figure, false);
             }
 
         }
 
-        private static void OwnE(double x, double y)
+        private static void OwnE(double x, double y, string figure)
         {
             double sum = x + y;
             double diff = x - y;
@@ -217,16 +226,16 @@ namespace HMT_01
             {
                 if ((sum <= 1) && (sum >= -2) && (diff >= -2) && (diff <= -1))
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [е]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
-                
+
             }
             else if (x >= 0)
             {
                 if (x * x + y * y <= 1)
                 {
-                    Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [е]", x, y);
+                    Message(x, y, figure, true);
                     flag = 1;
                 }
 
@@ -234,54 +243,74 @@ namespace HMT_01
 
             if (flag == 0)
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [е]", x, y);
+                Message(x, y, figure, false);
             }
 
         }
 
-        
-     
 
-        private static void OwnD(double x, double y)
+
+
+        private static void OwnD(double x, double y, string figure)
         {
             if ((2 * Math.Abs(x) + Math.Abs(y)) == 1)
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [д]", x, y);
+            {
+                Message(x, y, figure, true);
+            }
             else
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [д]", x, y);
+            {
+                Message(x, y, figure, false);
+            }
         }
 
-        private static void OwnG(double x, double y)
+        private static void OwnG(double x, double y, string figure)
         {
             if (Math.Abs(x) + Math.Abs(y) == 1)
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [г]", x, y);
+            {
+                Message(x, y, figure, true);
+            }
             else
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [г]", x, y);
+            {
+                Message(x, y, figure, false);
+            }
         }
 
-        private static void OwnV(double x, double y)
+        private static void OwnV(double x, double y, string figure)
         {
             if (x * x + y * y <= 2)
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [в]", x, y);
+            {
+                Message(x, y, figure, true);
+            }
             else
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [в]", x, y);
+            {
+                Message(x, y, figure, false);
+            }
         }
 
-        private static void OwnB(double x, double y)
+        private static void OwnB(double x, double y, string figure)
         {
             if ((x * x + y * y <= 1) && (x * x + y * y >= 0.5))
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [б]", x, y);
+            {
+                Message(x, y, figure, true);
+            }
             else
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [б]", x, y);
+            {
+                Message(x, y, figure, false);
+            }
         }
 
 
 
-        public static void OwnA(double x, double y)
+        public static void OwnA(double x, double y, string figure)
         {
             if (x * x + y * y <= 1)
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [а]", x, y);
+            {
+                Message(x, y, figure, true);
+            }
             else
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [а]", x, y);
+            {
+                Message(x, y, figure, false);
+            }
         }
     }
 }

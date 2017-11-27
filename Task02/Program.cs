@@ -42,12 +42,19 @@ namespace Task02
 
                 double D = b * b - 4 * a * c;
                 Console.WriteLine("Дискриминант = {0}  ", D);
-                if ((D >= 0) && (a != 0))
+                if ((D > 0) && (a != 0))
                 {
                     double x1 = (-b - sqrt(D)) / (2 * a);
                     double x2 = (-b + sqrt(D)) / (2 * a);
                     Console.WriteLine("Корни уравнения:");
                     Console.WriteLine("x1 = {0},   x2 = {1} ", x1, x2);
+                }
+                else if (D == 0)
+                {
+                    double x1 = -b  / (2 * a);
+                    Console.WriteLine("Корень уравнения:");
+                    Console.WriteLine("x1 = {0}", x1);
+
                 }
                 else
                 {
