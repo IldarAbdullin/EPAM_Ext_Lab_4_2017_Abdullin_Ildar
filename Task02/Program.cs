@@ -5,16 +5,16 @@
 namespace Task02
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Collections.Generic;//todo pn неиспользуемые using удаляем
+    using System.Linq;//todo pn неиспользуемые using удаляем
+	using System.Text;//todo pn неиспользуемые using удаляем
+	using System.Threading.Tasks;//todo pn неиспользуемые using удаляем
 
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
-            Func<double, double> sin = Math.Sin;
+            Func<double, double> sin = Math.Sin;//todo pn так обычно не делают
             Func<double, double> cos = Math.Cos;
             Func<double, double> tg = Math.Tan;
             Func<double, double> abs = Math.Abs;

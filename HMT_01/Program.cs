@@ -75,16 +75,16 @@ namespace HMT_01
         {
             if (flag)
             {
-                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [{2}]", x, y, figure);
+                Console.WriteLine("Точка [({0}; {1})] принадлежит фигуре [{2}]", x, y, figure);//todo np говорил на лекции о том, что строка должна быть одна, а отображение "не" параметризовано
             }
             else
             {
-                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [{2}]", x, y, figure);
-            }
+                Console.WriteLine("Точка [({0}; {1})] не принадлежит фигуре [{2}]", x, y, figure);//todo np говорил на лекции о том, что строка должна быть одна, а отображение "не" параметризовано
+			}
         }
 
-        private static void OwnK(double x, double y, string figure)
-        {
+        private static void OwnK(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
             int flag = 0;
             if (y >= 1)
             {
@@ -106,8 +106,8 @@ namespace HMT_01
             }
         }
 
-        private static void OwnI(double x, double y, string figure)
-        {
+        private static void OwnI(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
             int flag = 0;
             if (y <= 0)
             {
@@ -132,8 +132,8 @@ namespace HMT_01
             }
         }
 
-        private static void OwnZ(double x, double y, string figure)
-        {
+        private static void OwnZ(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
             int flag = 0;
             if (y <= 0)
             {
@@ -170,14 +170,14 @@ namespace HMT_01
         }
 
         //// Метод принимает точку (x,y), три вершины треугольник  и проверяет принадлежность точки, данному треугольнику
-        private static bool IsInTriangle(double x1, double y1, double x2, double y2, double x3, double y3, double x, double y)
-        {
+        private static bool IsInTriangle(double x1, double y1, double x2, double y2, double x3, double y3, double x, double y)//todo np вынести в отдельный класс
+		{
             double k, m, n;
             k = ((x1 - x) * (y2 - y1)) - ((x2 - x1) * (y1 - y));
             m = ((x2 - x) * (y3 - y2)) - ((x3 - x2) * (y2 - y));
             n = ((x3 - x) * (y1 - y3)) - ((x1 - x3) * (y3 - y));
-            if ((k >= 0 && m >= 0 && n >= 0) || (k <= 0 && m <= 0 && n <= 0))
-            {
+            if ((k >= 0 && m >= 0 && n >= 0) || (k <= 0 && m <= 0 && n <= 0))//todo pn испрвить на return k >= 0 && m >= 0 && n >= 0) || (k <= 0 && m <= 0 && n <= 0);
+			{
                 return true;
             }
             else
@@ -186,8 +186,8 @@ namespace HMT_01
             }
         }
 
-        private static void OwnZH(double x, double y, string figure)
-        {
+        private static void OwnZH(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
             int flag = 0;
 
             if ((y <= 2) && (y >= -1))
@@ -205,8 +205,8 @@ namespace HMT_01
             }
         }
 
-        private static void OwnE(double x, double y, string figure)
-        {
+        private static void OwnE(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
             double sum = x + y;
             double diff = x - y;
             int flag = 0;
@@ -233,10 +233,10 @@ namespace HMT_01
             }
         }
 
-        private static void OwnD(double x, double y, string figure)
-        {
-            if (((2 * Math.Abs(x)) + Math.Abs(y)) == 1)
-            {
+        private static void OwnD(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
+            if (((2 * Math.Abs(x)) + Math.Abs(y)) == 1)//todo pn поправить 
+			{
                 Message(x, y, figure, true);
             }
             else
@@ -245,10 +245,10 @@ namespace HMT_01
             }
         }
 
-        private static void OwnG(double x, double y, string figure)
-        {
-            if (Math.Abs(x) + Math.Abs(y) == 1)
-            {
+        private static void OwnG(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
+            if (Math.Abs(x) + Math.Abs(y) == 1)//todo pn поправить 
+			{
                 Message(x, y, figure, true);
             }
             else
@@ -257,10 +257,10 @@ namespace HMT_01
             }
         }
 
-        private static void OwnV(double x, double y, string figure)
-        {
-            if ((x * x) + (y * y) <= 2)
-            {
+        private static void OwnV(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
+            if ((x * x) + (y * y) <= 2)//todo pn поправить
+			{
                 Message(x, y, figure, true);
             }
             else
@@ -269,10 +269,10 @@ namespace HMT_01
             }
         }
 
-        private static void OwnB(double x, double y, string figure)
-        {
-            if (((x * x) + (y * y) <= 1) && ((x * x) + (y * y) >= 0.5))
-            {
+        private static void OwnB(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
+            if (((x * x) + (y * y) <= 1) && ((x * x) + (y * y) >= 0.5))//todo pn поправить
+			{
                 Message(x, y, figure, true);
             }
             else
@@ -281,10 +281,10 @@ namespace HMT_01
             }
         }
 
-        private static void OwnA(double x, double y, string figure)
-        {
-            if ((x * x) + (y * y) <= 1)
-            {
+        private static void OwnA(double x, double y, string figure)//todo np вынести в отдельный класс
+		{
+            if ((x * x) + (y * y) <= 1) //todo pn можно (и нужно) переписать эти несколько строк в одну: Message(x, y, figure, (x * x) + (y * y) <= 1). Исправь здесь и везде выше. 
+			{
                 Message(x, y, figure, true);
             }
             else
