@@ -4,27 +4,21 @@
 В консоли должно высветиться сообщение: «Точка [(x; y)] принадлежит фигуре [г]». 
 */
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 namespace HMT_01
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class Program
     {
-
-
-
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int flag = 1;
             while (flag == 1)
             {
-
                 Console.WriteLine("Введите букву фигуры");
                 string figure = Console.ReadLine();
 
@@ -33,7 +27,6 @@ namespace HMT_01
 
                 Console.WriteLine("Введите координату y");
                 double.TryParse(Console.ReadLine(), out double y);
-
 
                 switch (figure)
                 {
@@ -72,10 +65,10 @@ namespace HMT_01
                 Console.WriteLine("Если хотите ввести координаты и букву еще раз введите 1, инчае 0");
                 int.TryParse(Console.ReadLine(), out flag);
                 if (flag == 1)
+                {
                     Console.Clear();
+                }
             }
-
-
         }
 
         private static void Message(double x, double y, string figure, bool flag)
@@ -105,7 +98,6 @@ namespace HMT_01
                     Message(x, y, figure, false);
                     flag = 1;
                 }
-
             }
 
             if (flag == 0)
@@ -119,7 +111,7 @@ namespace HMT_01
             int flag = 0;
             if (y <= 0)
             {
-                if ((x >= (y - 3) / 2) && (x <= 3 * y + 1))
+                if ((x >= (y - 3) / 2) && (x <= (3 * y) + 1))
                 {
                     Message(x, y, figure, true);
                     flag = 1;
@@ -132,7 +124,6 @@ namespace HMT_01
                     Message(x, y, figure, true);
                     flag = 1;
                 }
-
             }
 
             if (flag == 0)
@@ -178,13 +169,13 @@ namespace HMT_01
             }
         }
 
-        //Метод принимает точку (x,y), три вершины треугольник  и проверяет принадлежность точки, данному треугольнику
+        //// Метод принимает точку (x,y), три вершины треугольник  и проверяет принадлежность точки, данному треугольнику
         private static bool IsInTriangle(double x1, double y1, double x2, double y2, double x3, double y3, double x, double y)
         {
             double k, m, n;
-            k = (x1 - x) * (y2 - y1) - (x2 - x1) * (y1 - y);
-            m = (x2 - x) * (y3 - y2) - (x3 - x2) * (y2 - y);
-            n = (x3 - x) * (y1 - y3) - (x1 - x3) * (y3 - y);
+            k = ((x1 - x) * (y2 - y1)) - ((x2 - x1) * (y1 - y));
+            m = ((x2 - x) * (y3 - y2)) - ((x3 - x2) * (y2 - y));
+            n = ((x3 - x) * (y1 - y3)) - ((x1 - x3) * (y3 - y));
             if ((k >= 0 && m >= 0 && n >= 0) || (k <= 0 && m <= 0 && n <= 0))
             {
                 return true;
@@ -194,7 +185,6 @@ namespace HMT_01
                 return false;
             }
         }
-
 
         private static void OwnZH(double x, double y, string figure)
         {
@@ -207,14 +197,12 @@ namespace HMT_01
                     Message(x, y, figure, true);
                     flag = 1;
                 }
-
             }
 
             if (flag == 0)
             {
                 Message(x, y, figure, false);
             }
-
         }
 
         private static void OwnE(double x, double y, string figure)
@@ -229,31 +217,25 @@ namespace HMT_01
                     Message(x, y, figure, true);
                     flag = 1;
                 }
-
             }
             else if (x >= 0)
             {
-                if (x * x + y * y <= 1)
+                if ((x * x) + (y * y) <= 1)
                 {
                     Message(x, y, figure, true);
                     flag = 1;
                 }
-
             }
 
             if (flag == 0)
             {
                 Message(x, y, figure, false);
             }
-
         }
-
-
-
 
         private static void OwnD(double x, double y, string figure)
         {
-            if ((2 * Math.Abs(x) + Math.Abs(y)) == 1)
+            if (((2 * Math.Abs(x)) + Math.Abs(y)) == 1)
             {
                 Message(x, y, figure, true);
             }
@@ -277,7 +259,7 @@ namespace HMT_01
 
         private static void OwnV(double x, double y, string figure)
         {
-            if (x * x + y * y <= 2)
+            if ((x * x) + (y * y) <= 2)
             {
                 Message(x, y, figure, true);
             }
@@ -289,7 +271,7 @@ namespace HMT_01
 
         private static void OwnB(double x, double y, string figure)
         {
-            if ((x * x + y * y <= 1) && (x * x + y * y >= 0.5))
+            if (((x * x) + (y * y) <= 1) && ((x * x) + (y * y) >= 0.5))
             {
                 Message(x, y, figure, true);
             }
@@ -299,11 +281,9 @@ namespace HMT_01
             }
         }
 
-
-
-        public static void OwnA(double x, double y, string figure)
+        private static void OwnA(double x, double y, string figure)
         {
-            if (x * x + y * y <= 1)
+            if ((x * x) + (y * y) <= 1)
             {
                 Message(x, y, figure, true);
             }
