@@ -1,0 +1,6 @@
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\obj\Debug\Task4.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\obj\Debug\Task4.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\bin\Debug\Task4.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\bin\Debug\Task4.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\obj\Debug\Task4.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task4\obj\Debug\Task4.pdb

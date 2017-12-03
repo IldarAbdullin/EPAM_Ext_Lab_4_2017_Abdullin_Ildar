@@ -1,0 +1,5 @@
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task3\bin\Debug\Task3.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task3\bin\Debug\Task3.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task3\obj\Debug\Task3.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task3\obj\Debug\Task3.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task3\obj\Debug\Task3.pdb
