@@ -12,7 +12,7 @@ namespace Task6
     {
         public static void Main(string[] args)
         {
-            string style = "None";
+            string style = "None";//todo pn хардкод
             bool flagBold, flagItalic, flagUnderline;
             flagBold = flagItalic = flagUnderline = false;
             while (true)

@@ -9,22 +9,22 @@ namespace Task5
 
     public class Program
     {
-        public static void Main(string[] args)
-        {
+        public static void Main(string[] args)//todo pn частное решение
+		{
             int sum = 0;
             int num = 1;
-            while (sum + num < 1000)
-            { 
-                if ((num % 3 == 0) || (num % 5 == 0))
-                {
+            while (sum + num < 1000)//todo pn хардкод
+			{ 
+                if ((num % 3 == 0) || (num % 5 == 0))//todo pn хардкод
+				{
                     sum += num;
                 }
 
                 num++;
             }
 
-            Console.WriteLine("The sum of the numbers of multiples of 3 or 5 is less than 1000 = {0}", sum);
-            Console.ReadKey();
+            Console.WriteLine("The sum of the numbers of multiples of 3 or 5 is less than 1000 = {0}", sum);//todo pn хардкод (1000)
+			Console.ReadKey();
         }
     }
 }
