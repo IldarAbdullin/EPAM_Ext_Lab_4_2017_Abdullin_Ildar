@@ -12,19 +12,21 @@ namespace Task5
         public static void Main(string[] args)
         {
             int sum = 0;
-            int num = 1;
-            while (sum + num < 1000)
+            int multiple1 = 3;
+            int multiple2 = 5;
+            int numberOfTerms = 1000;
+            for (int i = 1; i < numberOfTerms; i++)
             { 
-                if ((num % 3 == 0) || (num % 5 == 0))
+                if ((i % multiple1 == 0) || (i % multiple2 == 0))
                 {
-                    sum += num;
+                    sum += i;
                 }
-
-                num++;
             }
 
-            Console.WriteLine("The sum of the numbers of multiples of 3 or 5 is less than 1000 = {0}", sum);
+            Console.WriteLine("the sum of all numbers less than {0}, multiples of {1} or {2} = {3} ", numberOfTerms, multiple1, multiple2, sum);
             Console.ReadKey();
         }
+        
+        
     }
 }

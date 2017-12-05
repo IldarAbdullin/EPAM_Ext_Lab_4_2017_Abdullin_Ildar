@@ -3,3 +3,9 @@ C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task5\bin\D
 C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task5\bin\Debug\Task5.pdb
 C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task5\obj\Debug\Task5.exe
 C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task1\Task5\obj\Debug\Task5.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\bin\Debug\Task5.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\bin\Debug\Task5.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\obj\Debug\Task5.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\obj\Debug\Task5.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\obj\Debug\Task5.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_02\Task5\obj\Debug\Task5.pdb

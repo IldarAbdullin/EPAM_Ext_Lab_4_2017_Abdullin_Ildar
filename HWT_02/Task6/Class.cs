@@ -20,7 +20,7 @@
             }
         }
 
-        public static void PrintMenu(string style)
+        public static void PrintMenu(string style = "None")
         {
             Console.WriteLine("Введите 0, если хотите закончить\n\nПармаетр надписи:  {0}\n Введите:\n\t 1:  bold\n\t 2:  italic\n\t 3:  underline", style);
         }

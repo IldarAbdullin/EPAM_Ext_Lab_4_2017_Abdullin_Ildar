@@ -12,7 +12,7 @@ namespace Task6
     {
         public static void Main(string[] args)
         {
-            string style = "None";
+            string style = string.Empty;
             bool flagBold, flagItalic, flagUnderline;
             flagBold = flagItalic = flagUnderline = false;
             while (true)
@@ -25,6 +25,6 @@ namespace Task6
                     break;
                 }
             }
-        }      
+        }
     }
 }
