@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D49FA592-2BCE-491F-80D4-0AC92488DAFC}</ProjectGuid>
+    <ProjectGuid>{BBDAD217-F8E9-4D00-9CDE-E3E15538ECFB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>HWT_04</RootNamespace>
-    <AssemblyName>HWT_04</AssemblyName>
+    <RootNamespace>Task03</RootNamespace>
+    <AssemblyName>Task03</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,11 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
