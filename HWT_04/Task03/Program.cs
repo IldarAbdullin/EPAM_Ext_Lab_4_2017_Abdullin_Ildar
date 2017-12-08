@@ -4,9 +4,9 @@ StringBuilder для операции сложения строк:
  */
 namespace Task03
 {
-    using System;
+    using System;//todo pn лишний
 
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {

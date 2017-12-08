@@ -7,7 +7,7 @@
  */
 namespace HWT_04
 {
-    using System;
+    using System;//todo pn лишний
 
     public class Program
     {

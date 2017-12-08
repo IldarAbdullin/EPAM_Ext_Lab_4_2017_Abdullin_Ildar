@@ -4,7 +4,7 @@
     using System.Diagnostics;
     using System.Text;
 
-    public class Class
+    public class Class//todo pn собственно исследовательской работы не увидел
     {
         public const int NumTests = 4; ////количество тестов
 

@@ -4,9 +4,9 @@
  */
 namespace Task02
 {
-    using System;
+    using System;//todo pn лишний
 
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
