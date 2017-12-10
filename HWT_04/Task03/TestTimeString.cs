@@ -4,7 +4,7 @@
     using System.Diagnostics;
     using System.Text;
 
-    public class Class
+    public class TestTimeString
     {
         public const int NumTests = 4; ////количество тестов
 

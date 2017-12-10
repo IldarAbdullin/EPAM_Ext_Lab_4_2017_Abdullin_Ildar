@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public static class Class
+    public static class AvgWord
     {
         public static void InputAndCalc()
         {

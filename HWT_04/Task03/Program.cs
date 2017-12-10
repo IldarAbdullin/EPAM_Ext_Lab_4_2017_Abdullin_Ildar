@@ -4,13 +4,11 @@ StringBuilder для операции сложения строк:
  */
 namespace Task03
 {
-    using System;
-
     public class Program
     {
         public static void Main(string[] args)
         {
-            Class.InputAndCalc();
+            TestTimeString.InputAndCalc();
         }
     }
 }

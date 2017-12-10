@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public class Class
+    public class DoubleSymbol
     {
         public static void InputAndCalc()
         {
@@ -31,7 +31,7 @@
             while (true)
             {
                 var tmp = str[i].ToString();
-                str = str.Replace(tmp, "");
+                str = str.Replace(tmp, String.Empty);
                 str = str.Insert(i, tmp);
                 i++;
                 if (str.Length - 1 < i)
