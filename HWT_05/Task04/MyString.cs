@@ -2,13 +2,31 @@
 {
     using System;
 
-    class MyString
+    public class MyString
     {
         public char[] Value;
 
         public MyString(char[] str)
         {
-             Value = str;
+            this.Value = str;
+        }
+
+        public static MyString operator +(MyString str1, MyString str2)
+        {
+            char[] str = new char[str1.Length() + str2.Length()];
+
+            for (int i = 0; i < str1.Length(); i++)
+            {
+                str[i] = str1.Value[i];
+            }
+
+            for (int i = 0; i < str2.Length(); i++)
+            {
+                str[str1.Length() + i] = str2.Value[i];
+            }
+
+            var foldedRows = new MyString(str);
+            return foldedRows;
         }
 
         public int MyIndexOf(char[] str)
@@ -23,9 +41,9 @@
             }
             else
             {
-                for (int i = 0; i < Value.Length; i++)
+                for (int i = 0; i < this.Value.Length; i++)
                 {
-                    if (Value[i] == str[j])
+                    if (this.Value[i] == str[j])
                     {
                         if (j == 0)
                         {
@@ -50,69 +68,53 @@
 
         public MyString MyToUpper()
         {
-            for (int i = 0; i < Value.Length; i++)
+            for (int i = 0; i < this.Value.Length; i++)
             {
-                Value[i] = char.ToUpper(Value[i]);
+                this.Value[i] = char.ToUpper(this.Value[i]);
             }
+
             return this;
         }
 
         public MyString MyToLower()
         {
-            for (int i = 0; i < Value.Length; i++)
+            for (int i = 0; i < this.Value.Length; i++)
             {
-                Value[i] = char.ToLower(Value[i]);
+                this.Value[i] = char.ToLower(this.Value[i]);
             }
+
             return this;
         }
 
         public int Length()
         {
-            return Value.Length;
-        }
-
-        public static MyString operator + (MyString str1, MyString str2)
-        {
-            char[] str = new char[str1.Length() + str2.Length()]; 
-
-            for (int i = 0; i < str1.Length(); i++)
-            {
-                str[i] = str1.Value[i];
-            }
-
-            for (int i = 0; i < str2.Length(); i++)
-            {
-                str[str1.Length() + i] = str2.Value[i];
-            }
-
-            var foldedRows = new MyString(str);
-            return foldedRows;
+            return this.Value.Length;
         }
 
         public MyString MyInsert(int startIndex, MyString newStr)
         {
-            char[] str = new char[Value.Length + newStr.Length()];
+            char[] str = new char[this.Value.Length + newStr.Length()];
             int i1;
-            for (i1 = 0; i1<startIndex; i1++)
+            for (i1 = 0; i1 < startIndex; i1++)
             {
-                str[i1] = Value[i1];
+                str[i1] = this.Value[i1];
             }
 
             int j = 0;
             int i2;
-            for (i2 = startIndex; i2 < newStr.Length()+ startIndex; i2++)
+            for (i2 = startIndex; i2 < newStr.Length() + startIndex; i2++)
             {
                 str[i2] = newStr.Value[j];
                 j++;
             }
 
-            for (int i = i2++; i < Value.Length + newStr.Length()  ; i++)
+            for (int i = i2++; i < this.Value.Length + newStr.Length(); i++)
             {
                 ++i1;
-                str[i] = Value[i1];
+                str[i] = this.Value[i1];
             }
 
-            Value = str;
+            this.Value = str;
             return this;
         }
     }

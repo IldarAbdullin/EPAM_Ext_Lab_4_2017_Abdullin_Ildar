@@ -2,41 +2,40 @@
 {
     using System;
 
-    class User
+    public class User
     {
         public string Name, Surname, Patronymic;
-        private int Age;
-        private DateTime Birthday;
+        private int age;
+        private DateTime birthday;
 
         public User()
         {
-            Name = "Иван";
-            Surname = "Иванов";
-            Patronymic = "Иванович";
-            SetBirthday(new DateTime(1990, 01, 01));
-            Age = GetAge();
-
+            this.Name = "Иван";
+            this.Surname = "Иванов";
+            this.Patronymic = "Иванович";
+            this.SetBirthday(new DateTime(1990, 01, 01));
+            this.age = this.GetAge();
         }
 
         public User(string name, string surname, string patronymic, DateTime birthday)
         {
-            Name = name;
-            Surname = surname;
-            Patronymic = patronymic;
-            SetBirthday(birthday);
-            Age = GetAge();
+            this.Name = name;
+            this.Surname = surname;
+            this.Patronymic = patronymic;
+            this.SetBirthday(birthday);
+            this.age = this.GetAge();
         }
 
         public DateTime GetBirthday()
         {
-            return Birthday;
+            return this.birthday;
         }
 
         public void SetBirthday(DateTime value)
         {
             if (value.Year > 1900)
             {
-                Birthday = value;
+                this.birthday = value;
             }
             else
             {
@@ -44,13 +43,10 @@
             }
         }
 
-
         public int GetAge()
         {
             DateTime nowDate = DateTime.Today;
-            return nowDate.Year - GetBirthday().Year;
-
+            return nowDate.Year - this.GetBirthday().Year;
         }
-
     }
 }

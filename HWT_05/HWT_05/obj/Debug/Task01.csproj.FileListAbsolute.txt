@@ -1,6 +1,0 @@
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\bin\Debug\HWT_05.exe
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\bin\Debug\HWT_05.pdb
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\obj\Debug\Task01.csproj.CoreCompileInputs.cache
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\obj\Debug\HWT_05.exe
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\obj\Debug\HWT_05.pdb
-C:\Users\1\Documents\Visual Studio 2017\Projects\HMT_01\HWT_05\HWT_05\obj\Debug\Task01.csprojResolveAssemblyReference.cache

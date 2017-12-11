@@ -8,9 +8,9 @@ namespace Task02
 {
     using System;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Triangle triangle = new Triangle(4, 5, 6);
             Console.WriteLine($"Triangle with sides a = {triangle.A}, b = {triangle.B}, c = {triangle.C}");

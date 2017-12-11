@@ -8,9 +8,9 @@ namespace Task03
 {
     using System;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             User user = new User("Владимир", "Путин", "Владимирович", new DateTime(1952, 10, 7));
             Console.WriteLine($"Фамилия: {user.Surname}");

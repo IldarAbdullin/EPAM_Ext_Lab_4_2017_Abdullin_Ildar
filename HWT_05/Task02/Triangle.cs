@@ -2,49 +2,49 @@
 {
     using System;
 
-    class Triangle
-    {
-        public double A { get; set; }
-        public double B { get; set; }
-        public double C { get; set; }
-
+    public class Triangle
+    {    
         public Triangle(int a, int b, int c)
         {
             if ((a < b + c) & (b < a + c) & (c < a + b))
             {
                 if (a > 0)
                 {
-                    A = a;
+                    this.A = a;
                 }
-
 
                 if (b > 0)
                 {
-                    B = b;
+                    this.B = b;
                 }
 
-                if (a > 0)
+                if (c > 0)
                 {
-                    C = c;
+                    this.C = c;
                 }
             }
             else
             {
-                A = B = C = 0;
+                this.A = this.B = this.C = 0;
                 Console.WriteLine("A triangle with such sides does not exist!");
             }
-
         }
+
+        public double A { get; set; }
+
+        public double B { get; set; }
+
+        public double C { get; set; }
 
         public double GetPerimeter()
         {
-            return A + B + C;
+            return this.A + this.B + this.C;
         }
 
         public double GetArea()
         {
-            double SemiPerimeter = GetPerimeter() / 2;
-            return Math.Sqrt(SemiPerimeter * (SemiPerimeter - A) * (SemiPerimeter - B) * (SemiPerimeter - C));
+            double semiPerimeter = this.GetPerimeter() / 2;
+            return Math.Sqrt(semiPerimeter * (semiPerimeter - this.A) * (semiPerimeter - this.B) * (semiPerimeter - this.C));
         }
     }
 }
