@@ -30,7 +30,7 @@
             }
         }
 
-        public double A { get; set; }
+        public double A { get; set; } //todo pn а если у тебя изменят значение одной из сторон на некорректное. Что будешь делать?
 
         public double B { get; set; }
 

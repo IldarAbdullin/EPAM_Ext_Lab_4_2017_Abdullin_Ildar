@@ -12,7 +12,7 @@ namespace Task03
     {
         public static void Main(string[] args)
         {
-            User user = new User("Владимир", "Путин", "Владимирович", new DateTime(1952, 10, 7));
+            User user = new User("Владимир", "Путин", "Владимирович", new DateTime(1952, 10, 7)); //todo pn а ты дерзкий!
             Console.WriteLine($"Фамилия: {user.Surname}");
             Console.WriteLine($"Имя: {user.Name}");
             Console.WriteLine($"Отчество: {user.Patronymic}");

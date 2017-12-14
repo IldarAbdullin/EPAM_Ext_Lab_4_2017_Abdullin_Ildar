@@ -43,7 +43,7 @@
             {
                 for (int i = 0; i < this.Value.Length; i++)
                 {
-                    if (this.Value[i] == str[j])
+                    if (this.Value[i] == str[j]) //todo pn при запуске упало здесь
                     {
                         if (j == 0)
                         {
