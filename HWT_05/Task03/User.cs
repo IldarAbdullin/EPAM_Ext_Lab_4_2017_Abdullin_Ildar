@@ -4,16 +4,29 @@
 
     public class User
     {
-        public string Name, Surname, Patronymic; // todo pn плохо проверяешь stylecop. Ругается на модификатор доступа.
+        private const string startName = "None";
+        private const string startSurname = "None";
+        private const string startPatronymic = "None";
+        ////private const DateTime startBirthday = new DateTime(1990, 01, 01);  //// так и не понял как это в начальное значение сделать
+        private const int minYear = 1990;
+        private string patronymic; 
         private int age;
         private DateTime birthday;
+        private string name;
+        private string surname;
+
+        public string Name { get => this.name; set => this.name = value; }
+
+        public string Surname { get => this.surname; set => this.surname = value; }
+
+        public string Patronymic { get => this.patronymic; set => this.patronymic = value; }
 
         public User()
         {
-            this.Name = "Иван";//todo pn hardcode
-            this.Surname = "Иванов";//todo pn hardcode
-			this.Patronymic = "Иванович";//todo pn hardcode
-			this.SetBirthday(new DateTime(1990, 01, 01));//todo pn hardcode
+            this.Name = startName;
+            this.Surname = startSurname;
+            this.Patronymic = startPatronymic;
+			this.SetBirthday(new DateTime(1990, 01, 01));
 			this.age = this.GetAge();
         }
 
@@ -33,20 +46,32 @@
 
         public void SetBirthday(DateTime value)
         {
-            if (value.Year > 1900)//todo pn hardcode
+            if (value.Year > minYear)
 			{
                 this.birthday = value;
             }
             else
             {
-                Console.WriteLine("Invalid date");//todo pn сильная связность (использование UI в слое бизнес логики)
-			}
+                ErrMessage();
+            }
         }
 
         public int GetAge()
         {
             DateTime nowDate = DateTime.Today;
-            return nowDate.Year - this.GetBirthday().Year;//todo pn некорректное вычисление даты (а если день рождения ещё не настал в текущем году)
+            if ((nowDate.Day >= this.GetBirthday().Day) && (nowDate.Month >= this.GetBirthday().Month))
+            {
+                return nowDate.Year - this.GetBirthday().Year;
+            }
+            else
+            {
+                return nowDate.Year - this.GetBirthday().Year - 1;
+            }
+        }
+
+        public void ErrMessage()
+        {
+            Console.WriteLine("Invalid date");
         }
     }
 }

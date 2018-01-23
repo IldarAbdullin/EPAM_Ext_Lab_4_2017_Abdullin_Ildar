@@ -3,7 +3,7 @@
     using System;
 
     public class Triangle
-    {    
+    {
         public Triangle(int a, int b, int c)
         {
             if ((a < b + c) & (b < a + c) & (c < a + b))
@@ -30,11 +30,66 @@
             }
         }
 
-        public double A { get; set; } //todo pn а если у тебя изменят значение одной из сторон на некорректное. Что будешь делать?
+        public double A
+        {
+            get
+            {
+                return A;
+            }
 
-        public double B { get; set; }
+            set
+            {
+                if (CheckParam(value))
+                {
+                    this.A = value;
+                }
+            }
+        }
 
-        public double C { get; set; }
+        public double B
+        {
+            get
+            {
+                return B;
+            }
+
+            set
+            {
+                if (CheckParam(value))
+                {
+                    this.B = value;
+                }
+            }
+        }
+
+        public double C
+        {
+            get
+            {
+                return C;
+            }
+
+            set
+            {
+                if (CheckParam(value))
+                {
+                    this.C = value;
+                }
+            }
+        }
+
+        public bool CheckParam(double value)
+        {
+            if (value <= 0)
+            {
+                Console.WriteLine($"{value} - Inccorect data");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         public double GetPerimeter()
         {

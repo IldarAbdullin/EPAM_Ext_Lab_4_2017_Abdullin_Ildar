@@ -10,3 +10,9 @@ C:\Users\1\Documents\Visual Studio 2017\Projects\EPAM_Ext_Lab_4_2017_Abdullin_Il
 C:\Users\1\Documents\Visual Studio 2017\Projects\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.csproj.CoreCompileInputs.cache
 C:\Users\1\Documents\Visual Studio 2017\Projects\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.exe
 C:\Users\1\Documents\Visual Studio 2017\Projects\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\bin\Debug\Task03.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\bin\Debug\Task03.pdb
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.csprojResolveAssemblyReference.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.csproj.CoreCompileInputs.cache
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.exe
+C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_05\Task03\obj\Debug\Task03.pdb
