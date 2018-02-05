@@ -12,7 +12,7 @@
             bool isPositiveNum = false;
             if (isDigit)
             {
-                double ch = Convert.ToDouble(str);
+                double ch = Convert.ToDouble(str);//todo pn может упасть здесь если будет слишком большое число или формат числа будет отличаться от формата чисел ОС.
                 if (((int)ch == ch) && (ch >= 0))
                 {
                     isPositiveNum = true;
