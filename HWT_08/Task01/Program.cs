@@ -31,7 +31,7 @@ namespace HWT_08
             return contrast == 1;
         }
 
-        public static void Sort(ref string[] arr, Comparison comparison)
+        public static void Sort(ref string[] arr, Comparison comparison)//todo pn пузырёк...
         {
             for (int i = 0; i < arr.Length; i++)
             {

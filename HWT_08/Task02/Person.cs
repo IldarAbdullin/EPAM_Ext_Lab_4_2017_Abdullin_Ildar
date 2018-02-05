@@ -32,26 +32,26 @@
             {
                 if (time.Hours < 12)
                 {
-                    message = "Good morning";
-                }
+                    message = "Good morning";//todo pn хардкод
+				}
 
                 if ((time.Hours >= 12) && (time.Hours < 17))
                 {
-                    message = "Good afternoon";
-                }
+                    message = "Good afternoon";//todo pn хардкод
+				}
 
                 if (time.Hours >= 17)
                 {
-                    message = "Good evening";
-                }
+                    message = "Good evening";//todo pn хардкод
+				}
             }
             else
             {
-                message = "Hello";
-            }
+                message = "Hello";//todo pn хардкод
+			}
 
-            Console.WriteLine("'{0}, {1}!', - {2} said.", message, anotherPerson.Name, this.Name);
-        }
+            Console.WriteLine("'{0}, {1}!', - {2} said.", message, anotherPerson.Name, this.Name);//todo pn хардкод
+		}
 
         public void Exit()
         {
@@ -64,7 +64,7 @@
 
         public void Goodbye(Person anotherPerson)
         {
-            Console.WriteLine("'Goodbye, {0}!', - {1} said.", anotherPerson.Name, this.Name);
-        }
+            Console.WriteLine("'Goodbye, {0}!', - {1} said.", anotherPerson.Name, this.Name);//todo pn хардкод
+		}
     }
 }

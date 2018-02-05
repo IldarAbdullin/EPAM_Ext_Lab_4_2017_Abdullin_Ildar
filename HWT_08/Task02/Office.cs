@@ -14,7 +14,7 @@
 
         public void CamePerson(Person person, TimeSpan time)
         {
-            Console.WriteLine("[{0} came to work.]", person.Name);
+            Console.WriteLine("[{0} came to work.]", person.Name);//todo pn хардкод
             foreach (var e in this.persons)
             {
                 person.OnCame += e.Greet;
@@ -28,8 +28,8 @@
 
         public void OutPerson(Person person)
         {
-            Console.WriteLine("[{0} gone home.]", person.Name);
-            person.Exit();
+            Console.WriteLine("[{0} gone home.]", person.Name);//todo pn хардкод
+			person.Exit();
             foreach (var c in this.persons)
             {
                 c.OnCame -= person.Greet;
