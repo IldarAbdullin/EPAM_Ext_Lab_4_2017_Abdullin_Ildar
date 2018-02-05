@@ -26,9 +26,9 @@
             }
         }
 
-        public static void Delete(ref List<int> list, int divider = 2)
+        public static void Delete(ref List<int> list, int divider = 2)//todo pn используй более простую формулу задачи Иосифа
         {
-            int count = 1; ////считчик людей
+            int count = 1; ////считчик людей //todo pn так назови его говорящим именем и не надо будет комментарий оставлять.
             int j = 0;  ////индекс в списке
 
             while (list.Count != 1)

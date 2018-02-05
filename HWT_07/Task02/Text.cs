@@ -36,7 +36,7 @@
 
         public void FileStr()
         {
-            using (var sr = new StreamReader(@"C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_07\Task02\text.txt"))
+            using (var sr = new StreamReader(@"C:\Users\1\Documents\Visual Studio 2017\Projects\EPam\EPAM_Ext_Lab_4_2017_Abdullin_Ildar\HWT_07\Task02\text.txt"))//todo pn а про относительные пути ты не слышал? Как мне найти этот файл на моей машине?
             {
                 while (!sr.EndOfStream)
                 {

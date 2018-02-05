@@ -4,7 +4,7 @@
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args) //todo pn почему не через проект тестов?
         {
             MyDynamicArray<int> array1 = new MyDynamicArray<int>();
             int[] array2 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
