@@ -128,7 +128,7 @@ SELECT  OrderID, ShippedDate, ShipVia
 Известно, что в подстроке 'chocolade' может быть изменена одна буква 'c' в середине - найти все продукты,
  которые удовлетворяют этому условию. Подсказка: результаты запроса должны высвечивать 2 строки.*/
 
- SELECT ProductName 
+ SELECT ProductName --выборка должна вернуть 2 строки
  FROM Northwind.Products
  WHERE ProductName LIKE 'cho_olade' ;
 
@@ -141,7 +141,7 @@ SELECT  OrderID, ShippedDate, ShipVia
  Для определения действительной цены на проданный продукт надо вычесть скидку из указанной в колонке 
  UnitPrice цены. Результатом запроса должна быть одна запись с одной колонкой с названием колонки 'Totals'.*/
 
- SELECT CONVERT(MONEY,(SUM((UnitPrice  - Discount) * Quantity)),1) AS 'Totals'
+ SELECT CONVERT(MONEY,(SUM((UnitPrice  - Discount) * Quantity)),1) AS 'Totals' -- чот неправильная калькуляция какая-то
  FROM Northwind.[Order Details];
 
 
@@ -375,7 +375,7 @@ SELECT  OrderID, ShippedDate, ShipVia
 	только то, что описано в требованиях по нему. ВСЕ ЗАПРОСЫ ПО ВЫЗОВУ ПРОЦЕДУР ДОЛЖНЫ БЫТЬ НАПИСАНЫ 
 	В ФАЙЛЕ Query.sql – см. пояснение ниже в разделе «Требования к оформлению». */
 
-	EXEC Northwind.GreatestOrders @Year = 1996, @countRecords = 10
+	EXEC Northwind.GreatestOrders @Year = 1996, @countRecords = 10 -- чот не заводится. Procedure or function 'GreatestOrders' expects parameter '@CountOrders', which was not supplied.
 
 
 	
@@ -407,7 +407,7 @@ SELECT  OrderID, ShippedDate, ShipVia
 	SubordinationInfo. В качестве алгоритма для решения этой задачи надо использовать пример, приведенный в Books
 	Online и рекомендованный Microsoft для решения подобного типа задач. Продемонстрировать использование процедуры.*/
 
-	EXEC Northwind.SubordinationInfo @EmployeeID = 4;
+	EXEC Northwind.SubordinationInfo @EmployeeID = 2;
 
 	/*13.4 Написать функцию, которая определяет, есть ли у продавца подчиненные. Возвращает тип данных BIT. В 
 	качестве входного параметра функции используется EmployeeID. Название функции IsBoss. Продемонстрировать 
