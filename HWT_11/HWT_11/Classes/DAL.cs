@@ -27,24 +27,25 @@
             using (IDbConnection connection = new SqlConnection(this.connectionString))
             {
                 var command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Northwind.Orders";
+                command.CommandText = "SELECT Orders.OrderID, Orders.CustomerID, Orders.EmployeeID,Orders.OrderDate,Orders.ShippedDate,Orders.ShipAddress FROM Northwind.Orders Orders";
                 connection.Open();
 
                 using (IDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        ////перепробывал и иницилиазатором и так уже, не понимаю, что не так, я пытался...
-                        //// Orders.Add(new Order(
-                        ////   reader.GetInt32(0) //OrderID
-                        //// , reader.GetString(1)//CustomerID
-                        //// , reader.GetInt32(2)//EmployeeID
-                        //// , reader.GetDateTime(3)//OrderDate
-                        //// , reader.GetDateTime(4)//ShippedDate
-                        //// , reader.GetString(5)//ShipAddress
-                        ////));
-                    }
-                }
+						//todo pn на одном или нескольких полях падает с ошибкой SqlNullReferenceException: т.е. ты хочешь взять и преобразовать значение, которого нет в базе и оно SQLNULL.
+						//перепробывал и иницилиазатором и так уже, не понимаю, что не так, я пытался...
+						 orders.Add(new Order(
+						   reader.GetInt32(0) //OrderID
+						 , reader.GetString(1)//CustomerID
+						 , reader.GetInt32(2)//EmployeeID
+						 , reader.GetDateTime(3)//OrderDate
+						 , reader.GetDateTime(4)//ShippedDate
+						 , reader.GetString(5)//ShipAddress
+						));
+					}
+				}
             }
 
             return orders;

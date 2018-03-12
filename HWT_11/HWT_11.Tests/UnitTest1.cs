@@ -24,5 +24,12 @@
             List<CustOrdersDetail> custOrdersDetail = dal.ViewCustOrdersDetail(11070);
             Assert.IsTrue(custOrdersDetail.Count > 0);
         }
-    }
+
+	    [TestMethod]
+	    public void GetOrders()
+	    {
+		    DAL dal = new DAL();
+		    List<Order> custOrderHist = dal.GetOrders();
+	    }
+	}
 }
