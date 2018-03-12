@@ -7,24 +7,11 @@
         Delivered,
         NotShipped
     }
+
     public class Order
     {
         private DateTime shippedDate;
-        public int OrderID { get; set; }
-        public string CustomerID { get; set; }
-        public int EmployeeID { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShippedDate
-        {
-            get { return shippedDate; }
-            set
-            {
-                shippedDate = value;
-                Status = ShippedDate != null ? OrderStatus.Delivered : OrderStatus.NotShipped;
-            }
-        }
-        public OrderStatus Status { get; set; }
-        public string ShipAddress { get; set; }
+
         public Order(int orderID, string customerID, int employeeID, DateTime orderDate, DateTime shippedDate, string adress)
         {
             this.OrderID = orderID;
@@ -34,5 +21,29 @@
             this.ShippedDate = shippedDate;
             this.ShipAddress = adress;
         }
+
+        public int OrderID { get; set; }
+
+        public string CustomerID { get; set; }
+
+        public int EmployeeID { get; set; }
+
+        public DateTime OrderDate { get; set; }
+
+        public DateTime ShippedDate
+        {
+            /// не понял че здесь ругается stylecope
+            get { return this.shippedDate; }
+
+            set
+            {
+                this.shippedDate = value;
+                this.Status = this.ShippedDate != null ? OrderStatus.Delivered : OrderStatus.NotShipped;
+            }
+        }
+
+        public OrderStatus Status { get; set; }
+
+        public string ShipAddress { get; set; }
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Classes\CustOrderHist.cs" />
     <Compile Include="Classes\CustOrdersDetail.cs" />
+    <Compile Include="Classes\DAL.cs" />
     <Compile Include="Classes\OrderDetails.cs" />
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Program.cs" />

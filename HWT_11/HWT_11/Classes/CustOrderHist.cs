@@ -2,13 +2,14 @@
 {
     public class CustOrderHist
     {
-        public string ProductName { get; set; }
-        public int Total { get; set; }
-
-        public CustOrderHist(string ProductName, int Total)
+        public CustOrderHist(string productName, int total)
         {
-            this.ProductName = ProductName;
-            this.Total = Total;
+            this.ProductName = productName;
+            this.Total = total;
         }
+
+        public string ProductName { get; set; }
+
+        public int Total { get; set; }      
     }
 }
