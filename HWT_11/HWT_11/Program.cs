@@ -29,7 +29,23 @@ namespace HWT_11
             ////    Console.WriteLine(custOrderHist.Count);
             ////}
 
+            dal.CreateNewOrder(
+                "VINET",
+                1,
+                new DateTime(1900, 01, 01),
+                new DateTime(1900, 01, 01),
+                new DateTime(1900, 01, 01),
+                1,
+                67,
+                "North/South",
+                "South House 300 Queensbridge",
+                "New York",
+                "NY",
+                87110,
+                "USA");
+
             var orders = dal.GetOrders();
+            Console.WriteLine(orders.Count < dal.GetOrders().Count);
             Console.ReadLine();
         }
     }   

@@ -10,9 +10,13 @@
 
     public class Order
     {
-        private DateTime shippedDate;
+        private DateTime? shippedDate;
 
-        public Order(int orderID, string customerID, int employeeID, DateTime orderDate, DateTime shippedDate, string adress)
+        public Order()
+        {
+        }
+
+        public Order(int orderID, string customerID, int employeeID, DateTime? orderDate, DateTime? shippedDate, string adress)
         {
             this.OrderID = orderID;
             this.CustomerID = customerID;
@@ -28,16 +32,16 @@
 
         public int EmployeeID { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
 
-        public DateTime ShippedDate
+        public DateTime? ShippedDate
         {
             /// не понял че здесь ругается stylecope
             get { return this.shippedDate; }
 
             set
             {
-                this.shippedDate = value;
+                this.shippedDate = (DateTime?)value;
                 this.Status = this.ShippedDate != null ? OrderStatus.Delivered : OrderStatus.NotShipped;
             }
         }

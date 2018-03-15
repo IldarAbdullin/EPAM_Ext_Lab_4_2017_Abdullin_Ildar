@@ -8,6 +8,8 @@
 
     public class DAL
     {
+        private DateTime? dateNULL = null;
+
         private string connectionString;
 
         public DAL()
@@ -34,18 +36,27 @@
                 {
                     while (reader.Read())
                     {
-						//todo pn на одном или нескольких полях падает с ошибкой SqlNullReferenceException: т.е. ты хочешь взять и преобразовать значение, которого нет в базе и оно SQLNULL.
-						//перепробывал и иницилиазатором и так уже, не понимаю, что не так, я пытался...
-						 orders.Add(new Order(
-						   reader.GetInt32(0) //OrderID
-						 , reader.GetString(1)//CustomerID
-						 , reader.GetInt32(2)//EmployeeID
-						 , reader.GetDateTime(3)//OrderDate
-						 , reader.GetDateTime(4)//ShippedDate
-						 , reader.GetString(5)//ShipAddress
-						));
-					}
-				}
+
+                        int orderID = reader.GetInt32(0);
+                        string customerID = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                        int employeeID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                        DateTime? orderDate = reader.IsDBNull(3) ? this.dateNULL : reader.GetDateTime(3);
+                        DateTime? shippedDate = reader.IsDBNull(5) ? this.dateNULL : reader.GetDateTime(5);
+                        string shipAddress = reader.IsDBNull(9) ? string.Empty : reader.GetString(9);
+
+                        Order o = new Order
+                        {
+                            OrderID = orderID,
+                            CustomerID = customerID,
+                            EmployeeID = employeeID,
+                            OrderDate = orderDate,
+                            ShippedDate = shippedDate,
+                            ShipAddress = shipAddress
+                        };
+
+                        orders.Add(o);
+                    }
+                }
             }
 
             return orders;
@@ -62,14 +73,13 @@
                                             [Order Details].ProductID, 
                                             [Order Details].Quantity,
                                             [Order Details].UnitPrice, 
-                                            [Order Details].Discount, 
-                                            Products.ProductID, 
+                                            [Order Details].Discount,  
                                             Products.ProductName
                                     from(Northwind.Orders join Northwind.[Order Details]
                                     on Orders.OrderID = [Order Details].OrderID) 
                                     join Northwind.Products 
-                                    on[Order Details].ProductID = Products.ProductID" +
-                                    $"Where Orders.OrderID = {ordersID}";
+                                    on[Order Details].ProductID = Products.ProductID
+                                    Where Orders.OrderID = @ordersID";
 
             var infoOrders = new List<OrderDetails>();
             using (IDbConnection connection = new SqlConnection(this.connectionString))
@@ -77,41 +87,96 @@
                 connection.Open();
                 var command = connection.CreateCommand();
                 command.CommandText = commandString;
+                this.Parameter(command, "@ordersID", ordersID, DbType.Int32);
                 command.CommandType = CommandType.Text;
 
-                var reader = command.ExecuteReader();
-                while (reader.Read())
+                using (IDataReader reader = command.ExecuteReader())
                 {
-                    ////пытался сделать через иницилиазатор,но он почему то не принимал и писал:
-                    ////отсутствует аргумент соответствующий требуемому формальному параметру 
-                    ////infoOrders.Add(new OrderDetails
-                    ////{
-                    ////    OrderID = (int)reader["OrderID"],
-                    ////    CustomerID = (int)reader["CustomerID"],
-                    ////    EmployeeID = (int)reader["EmployeeID"],
-                    ////    OrderDate = (DateTime)reader["OrderDate"],
-                    ////    ShippedDate = (DateTime)reader["ShippedDate"],
-                    ////    ShipAddress = (string)reader["ShipAddress"],
-                    ////    ProductID = (int)reader["ProductID"],
-                    ////    Quantity = (int)reader["Quantity"],
-                    ////    UnitPrice = (int)reader["UnitPrice"],
-                    ////    Discount = (int)reader["Discount"],
-                    ////    ProductName = (string)reader["ProductName"]
-                    ////});
+                    while (reader.Read())
+                    {
+                        int orderID = reader.GetInt32(0);
+                        string customerID = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                        int employeeID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                        DateTime? orderDate = reader.IsDBNull(3) ? this.dateNULL : reader.GetDateTime(3);
+                        DateTime? shippedDate = reader.IsDBNull(4) ? this.dateNULL : reader.GetDateTime(4);
+                        string shipAddress = reader.IsDBNull(5) ? string.Empty : reader.GetString(5);
+                        int productID = reader.GetInt32(6);
+                        int quantity = reader.IsDBNull(7) ? 0 : reader.GetInt16(7);
+                        decimal unitPrice = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8);
+                        float discount = reader.IsDBNull(9) ? 0 : reader.GetFloat(9);
+                        string productName = reader.GetString(10);
+
+                        OrderDetails od = new OrderDetails
+                        {
+                            OrderID = orderID,
+                            CustomerID = customerID,
+                            EmployeeID = employeeID,
+                            OrderDate = orderDate,
+                            ShippedDate = shippedDate,
+                            ShipAddress = shipAddress,
+                            ProductID = productID,
+                            Quantity = quantity,
+                            UnitPrice = unitPrice,
+                            Discount = discount,
+                            ProductName = (string)reader["ProductName"]
+                        };
+
+                        infoOrders.Add(od);
+                    }
                 }
             }
 
             return infoOrders;
         }
 
-        public void CreateNewOrder(string custmerID, int employeeID, DateTime orderDate, string requiueredDate, DateTime? shippedDate, int shipVia, double freight, string shipName, string shipAdress, string shipCity, string shipRegion, int shipPostalCode, string shipCountry)
+        public void CreateNewOrder(string custmerID, int employeeID, DateTime orderDate, DateTime requiueredDate, DateTime? shippedDate, int shipVia, double freight, string shipName, string shipAdress, string shipCity, string shipRegion, int shipPostalCode, string shipCountry)
         {
             using (IDbConnection connection = new SqlConnection(this.connectionString))
             {
                 var command = connection.CreateCommand();
-                command.CommandText = $"insert into Northwind.Orders values ('{custmerID}', {employeeID},{orderDate}, {requiueredDate}," +
-                                      $" {shippedDate}, {shipVia}, {freight}, '{shipName}', '{shipAdress}'," +
-                                      $"'{shipCity}', '{shipRegion}', {shipPostalCode}, '{shipCountry}');";
+                command.CommandText =
+                    @"INSERT INTO Northwind.Orders(
+                                CustomerID
+                               ,EmployeeID
+                               ,OrderDate
+                               ,RequiredDate
+                               ,ShippedDate
+                               ,ShipVia
+                               ,Freight
+                               ,ShipName
+                               ,ShipAddress
+                               ,ShipCity
+                               ,ShipRegion
+                               ,ShipPostalCode
+                               ,ShipCountry)
+                        values(
+                                @CustomerID
+                               ,@EmployeeID
+                               ,@OrderDate
+                               ,@RequiredDate
+                               ,@ShippedDate
+                               ,@ShipVia
+                               ,@Freight
+                               ,@ShipName
+                               ,@ShipAddress
+                               ,@ShipCity
+                               ,@ShipRegion
+                               ,@ShipPostalCode
+                               ,@ShipCountry)";
+
+                this.Parameter(command, "@CustomerID", custmerID, DbType.String);
+                this.Parameter(command, "@EmployeeID", employeeID, DbType.Int32);
+                this.Parameter(command, "@OrderDate", orderDate, DbType.DateTime);
+                this.Parameter(command, "@RequiredDate", requiueredDate, DbType.DateTime);
+                this.Parameter(command, "@ShippedDate", shippedDate, DbType.DateTime);
+                this.Parameter(command, "@ShipVia", shipVia, DbType.Int32);
+                this.Parameter(command, "@Freight", freight, DbType.Decimal);
+                this.Parameter(command, "@ShipName", shipName, DbType.String);
+                this.Parameter(command, "@ShipAddress", shipAdress, DbType.String);
+                this.Parameter(command, "@ShipCity", shipCity, DbType.String);
+                this.Parameter(command, "@ShipRegion", shipRegion, DbType.String);
+                this.Parameter(command, "@ShipPostalCode", shipPostalCode, DbType.String);
+                this.Parameter(command, "@ShipCountry", shipCountry, DbType.String);
 
                 connection.Open();
                 command.ExecuteNonQuery();
