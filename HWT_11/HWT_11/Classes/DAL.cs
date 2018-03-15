@@ -41,8 +41,8 @@
                         string customerID = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
                         int employeeID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                         DateTime? orderDate = reader.IsDBNull(3) ? this.dateNULL : reader.GetDateTime(3);
-                        DateTime? shippedDate = reader.IsDBNull(5) ? this.dateNULL : reader.GetDateTime(5);
-                        string shipAddress = reader.IsDBNull(9) ? string.Empty : reader.GetString(9);
+                        DateTime? shippedDate = reader.IsDBNull(4) ? this.dateNULL : reader.GetDateTime(4);
+                        string shipAddress = reader.IsDBNull(5) ? string.Empty : reader.GetString(5);
 
                         Order o = new Order
                         {
