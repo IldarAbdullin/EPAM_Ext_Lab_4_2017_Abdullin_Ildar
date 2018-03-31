@@ -1,0 +1,29 @@
+.buttons, .timer, .title {
+    text-align: center;
+    border: 5px solid red;
+    border-radius: 10px;
+    width: 300px;
+    margin: 20px;
+    background-color: #bbbbbb;
+}
+
+.title {
+    color: blue;
+}
+
+.timer {
+    font-size: 36px;
+    font-weight: bold;
+    color: red;
+}
+
+input {
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+}
+
+.timer p {
+    margin: 20px;
+    height: 40px;
+}
