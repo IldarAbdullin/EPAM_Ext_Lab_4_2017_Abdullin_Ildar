@@ -1,0 +1,79 @@
+﻿@model List<DAL.Models.Photo>
+
+@using DAL
+
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Lenta", "GetAllImage", "User", new { id = @ViewBag.IdUser, visitorId = @ViewBag.VisitorId }, new { @class = "navbar-brand" })
+        </div>
+    </div>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div>
+        <span class = "nothing-found">Nothing found</span>
+    </div>
+}
+else
+{
+    <table class="table">
+        @for (int i = 0; i <= Model.Count; i = i + 2)
+        {
+
+            <tr>
+                <td>
+                    @{
+                        if (i < Model.Count)
+
+                        {
+                            String img64 = Convert.ToBase64String(Model[i].File);
+                            String img64Url = string.Format("data:image/jpg;base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                            <img class="homeImg" src="@img64Url" tabindex="0" />
+                            int likes = Dal.GetLikes(Model[i].IdPhoto);
+                            Dal dal = new Dal();
+                            DAL.Models.User user = dal.GetUser(Model[i].IdUser);
+                            <div>
+                                <span>@Html.ActionLink(@user.UserName, "UserAccount", "User", new { idUser = @user.IdUser, visitorId = @ViewBag.VisitorId }, new { @class = "navbar-brand" })</span>
+                                @if ((@Model[i].IdUser == @ViewBag.VisitorId) || (@Model[i].IdUser == 1))
+                                {
+                                    <span>@Html.ActionLink("Delete ", "Delete", "User", new { idPhoto = Model[i].IdPhoto, idUser = @user.IdUser, @action = @"GetAllImage" , visitorId = @ViewBag.VisitorId }, new { @class = "navbar-brand" })</span>
+                                }
+                                <span class="navbar-brand">@likes likes</span>
+                                @*<span onclick="giveLike()" class="like">&#9829;</span>*@
+                            </div>
+                        }
+                    }
+                </td>
+                    <td>
+                        @{
+                            if (i + 1 < Model.Count)
+
+                            {
+                                String img = Convert.ToBase64String(Model[i + 1].File);
+                                String imgUrl = string.Format("data:image/jpg;base64,{0}", img); 
+                                <img class="homeImg" src="@imgUrl" tabindex="0" />
+                                int likes = Dal.GetLikes(Model[i + 1].IdPhoto);
+                                Dal dal = new Dal();
+                                DAL.Models.User user = dal.GetUser(Model[i + 1].IdUser);
+                                <div>
+                                    <span>@Html.ActionLink(@user.UserName, "UserAccount", "User", new { idUser = @user.IdUser }, new { @class = "navbar-brand" })</span>
+                                    @if ((@Model[i + 1].IdUser == @ViewBag.VisitorId) || (@Model[i + 1].IdUser == 1))
+                                    {
+                                        <span>@Html.ActionLink("Delete ", "Delete", "User", new { idPhoto = Model[i + 1].IdPhoto, idUser = @user.IdUser, @action = @"GetAllImage", visitorId = @ViewBag.VisitorId }, new { @class = "navbar-brand" })</span>
+                                    }
+                                    <span class="navbar-brand">@likes likes</span>
+                                    @*<span onclick="giveLike()" class="like">&#9829;</span>*@
+                                </div>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+    </table>
+}

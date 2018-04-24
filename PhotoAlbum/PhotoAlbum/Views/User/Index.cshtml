@@ -2,15 +2,17 @@
 
 
 <h2>
-    @Html.ActionLink("Create New User", "Create", "User")
+    @Html.ActionLink("Sign Up", "Create", "User")
 </h2>
 
-@if(ViewBag.ErrorMessage != string.Empty)
-{
-    <p>@ViewBag.ErrorMessage</p>
-}
+<div>
+    @if (@ViewBag.ErrorMess != string.Empty)
+    {
+        <p>@ViewBag.ErrorMess</p>
+    }
+</div>
 
-@using (Html.BeginForm("Index", "User", FormMethod.Post)) 
+@using (Html.BeginForm("Index", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -29,8 +31,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+                @Html.EditorFor(@model => @model.Pass, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                @Html.ValidationMessageFor(@model => @model.Pass, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -41,3 +43,4 @@
         </div>
     </div>
 }
+

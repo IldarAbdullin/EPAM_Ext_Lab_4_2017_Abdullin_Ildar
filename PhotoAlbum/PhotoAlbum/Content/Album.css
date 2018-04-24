@@ -63,12 +63,14 @@ img[tabindex="0"]:focus {
   right: 0;
   width: auto;
   height: auto;
-  max-width: 99%;
-  max-height: 99%;
+  /*max-width: 60%;*/
+    /*max-height: 80%;*/
+   max-width: 700px;
+  max-height: 500px;
   margin: auto;
   box-shadow: 0 0 20px #000, 0 0 0 1000px rgba(210,210,210,.4);
 }
-img[tabindex="0"]:focus,  /* убрать строку, если не нужно, чтобы при клике на увеличенное фото, оно возвращалось в исходное состояние */
+img[tabindex="0"]:focus,  
 img[tabindex="0"]:focus ~ * {
   pointer-events: none;
   cursor: zoom-out;
@@ -80,24 +82,7 @@ img.homeImg {
   height: 400px;
   object-fit: cover;
 }
-/*img.homeImg:hover {
-  display: block;
-  position: fixed;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
-  width: auto;
-  height: auto;
-  max-width: 99%;
-  max-height: 99%;
-  border: solid rgba(210,210,210,.4);
-  border-width: 100vh 100vw;
-  cursor: zoom-out;
-}
-:not(:active) > img.homeImg:not(:hover), img.homeImg:active {
-  pointer-events: none;
-}*/
+
 .user-avatar {
     width: 100px;
     height: 100px;
@@ -107,11 +92,14 @@ img.homeImg {
 }
 
 .avatar-container {
-    width: 400px;
-    height: 100px;
+    width:450px;
+    height: 150px;
     display: flex;
     justify-content: space-between;
+    /*justify-content: center;*/
     align-items: center;
+    margin-right: 40px;
+    border-bottom: 1px solid #cccccc; 
 }
 
 .user-name {
@@ -120,8 +108,62 @@ img.homeImg {
     text-transform: capitalize;
 }
 
-    .user-name::after {
-        content: '\272F';
-        color: gold;
-    }
+.user-name::after {
+    content: '\272F';
+    color: gold;
+}
+
+ .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    display: none;
+}
+
+#fileInput1 {
+    display: block;
+    width: 300px;
+}
+
+#fileInput2 {
+    min-width: 90%;
+    margin: 15px 0 15px 0;
+}
+
+.file-uploading-header {
+    font-size: 16px;
+    font-family: cursive;
+    text-transform: uppercase;
+}
+
+.nothing-found {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    margin-left: -150px;
+}
+
+.header :nth-of-type(1) {
+    position: absolute;
+    left: 4vw;
+}
+
+.header :nth-of-type(2) {
+    position: absolute;
+    left: 77vw;
+}
+
+.like {
+  font-size: 100px;
+  color: gray;
+  cursor: pointer;
+  user-select: none;
+}
 

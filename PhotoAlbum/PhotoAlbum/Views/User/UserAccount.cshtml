@@ -1,60 +1,114 @@
-﻿@model DAL.Models.User
+﻿@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
 
-    <span class="user-name">@Model.UserName</span>
-    <div class="avatar-container">
-        @{ 
-            String avatar = Convert.ToBase64String(@Model.Avatar);
+@using DAL
+
+@model DAL.Models.User
+
+
+<div class="navbar navbar-inverse navbar-fixed-top header">
+        @{
+            int visitors = @ViewBag.VisitorId == 0 ? @Model.IdUser : @ViewBag.VisitorId;
+        }
+        <div class="navbar-header">
+            @Html.ActionLink("Lenta", "GetAllImage", "User", new { id = @Model.IdUser, visitorId = @visitors }, new { @class = "navbar-brand" })
+
+        </div>
+        <div class="navbar-header">
+            <p class = "navbar-brand">
+                @Html.ActionLink("Exit", "Index")
+            </p>
+        </div>
+</div>
+
+        <span class="user-name">@Model.UserName</span>
+        <div class="avatar-container">
+            @*@{
+            String avatar = Convert.ToBase64String(@Model.Avatar);ViewBag.Photos[0].File
             String avatarUrl = string.Format("data:image/jpg;base64,{0}", avatar);
-        }
-        <img class="user-avatar" src="@avatarUrl">
-        @*<input class="file-input" type="file">*@
-        <form id="fileUpload" action="@Url.Action("AddImage",@Model.IdUser)" method="POST" enctype="multipart/form-data">
-            <input id="fileInput" type="file" />
-            <input type="submit" value="Upload file" id="btnFileUpload" />
-        </form>
-    </div>
-    <hr />
-    <div class="buttons-container">
-        @foreach (var tag in ViewBag.Tags)
-        {
-            <div class="hr">
-                <span>@tag</span>
-            </div>
-        }
-    </div>
+            }*@
 
-<table class="table">
-    @for (int i = 0; i <= ViewBag.Photos.Count; i = i + 2)
-    {
+            @{
+                String avatar = Convert.ToBase64String(@Model.Avatar);
+                String avatarUrl = string.Format("data:image/jpg;base64,{0}", avatar);
+            }
+            <img class="user-avatar" src="@avatarUrl" alt"no image">
+            @if ((@Model.IdUser == @ViewBag.VisitorId) || (@ViewBag.VisitorId == 0))
+            {
+            <form id="fileUpload" action="@Url.Action("AddImage", new { IdUser = @Model.IdUser, })" method="POST" enctype="multipart/form-data">
+                <span class="file-uploading-header">Загрузить новое избражение</span>
+                <input required id="fileInput1" name="tags" type="text" placeholder="Вводите тег/теги через пробел" />
+                <input required id="fileInput" name="image" type="file" />
+                <input type="submit" value="Upload file" id="btnFileUpload" />
+            </form>
+            }
+        </div>
+        <hr />
+        <div class="buttons-container">
+            @foreach (var tag in ViewBag.Tags)
+            {
+                <div class="hr">
+                    <span>@tag</span>
+                </div>
+            }
+        </div>
 
-        <tr>
-            <td>
-                @{
-                    if (i < ViewBag.Photos.Count)
+        <table class="table">
+            @for (int i = 0; i <= ViewBag.Photos.Count; i = i + 2)
+            {
 
-                    {
-                        String img64 = Convert.ToBase64String(ViewBag.Photos[i].File);
-                        String img64Url = string.Format("data:image/jpg;base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
-                        <img class="homeImg" src="@img64Url"  tabindex="0"/>
-                    }
-                }
-            </td>
-            <td>
-                @{
-                    if (i + 1 < ViewBag.Photos.Count)
+                <tr>
+                    <td>
+                        @{
 
-                    {
-                        String img = Convert.ToBase64String(ViewBag.Photos[i + 1].File);
-                        String imgUrl = string.Format("data:image/jpg;base64,{0}", img); //imagetype can be e.g. gif, jpeg, png etc.
-                        <img class="homeImg" src="@imgUrl"  tabindex="0"/>
-                    }
-                }
-            </td>
-        </tr>
-                    }
-</table>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            if (i < ViewBag.Photos.Count)
+                            {
+                                String img64 = Convert.ToBase64String(ViewBag.Photos[i].File);
+                                String img64Url = string.Format("data:image/jpg;base64,{0}", img64); 
+                                <img class="homeImg" src="@img64Url" tabindex="0" />
+                                int likes = Dal.GetLikes(ViewBag.Photos[i].IdPhoto);
+                                Dal dal = new Dal();
+                                int visitor = @ViewBag.VisitorId == 0 ? @Model.IdUser : @ViewBag.VisitorId;
+                                DAL.Models.User user = dal.GetUser(ViewBag.Photos[i].IdUser);
+                                <div>
+                                    <span>@Html.ActionLink(@user.UserName, "UserAccount", "User", new { idUser = @user.IdUser, visitorId = @visitor }, new { @class = "navbar-brand" })</span>
+                                    @if ((@ViewBag.Photos[i].IdUser == @ViewBag.VisitorId) || (@ViewBag.VisitorId == 1) || (@ViewBag.VisitorId == 0))
+                                    {
+                                        <span>@Html.ActionLink("Delete ", "Delete", "User", new { idPhoto = ViewBag.Photos[i].IdPhoto, idUser = @user.IdUser, action = @"UserAccount", visitorId = ViewBag.VisitorId }, new { @class = "navbar-brand" })</span>
+                                    }
+                                    <span class="navbar-brand">@likes likes</span>
+                                    @*<span onclick="giveLike()" class="like">&#9829;</span>*@
+                                </div>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @{
+                            if (i + 1 < ViewBag.Photos.Count)
+
+                            {
+                                String img = Convert.ToBase64String(ViewBag.Photos[i + 1].File);
+                                String imgUrl = string.Format("data:image/jpg;base64,{0}", img); //imagetype can be e.g. gif, jpeg, png etc.
+                                <img class="homeImg" src="@imgUrl" tabindex="0" />
+                                int likes = Dal.GetLikes(ViewBag.Photos[i + 1].IdPhoto);
+                                Dal dal = new Dal();
+                                int visitor = @ViewBag.VisitorId == 0 ? @Model.IdUser : @ViewBag.VisitorId;
+                                DAL.Models.User user = dal.GetUser(ViewBag.Photos[i + 1].IdUser);
+                                <div>
+                                    <span>@Html.ActionLink(@user.UserName, "UserAccount", "User", new { idUser = @user.IdUser, visitorId = @visitor }, new { @class = "navbar-brand" })</span>
+                                    @if ((@ViewBag.Photos[i + 1].IdUser == @ViewBag.VisitorId) || (@ViewBag.VisitorId == 1) || (@ViewBag.VisitorId == 0))
+                                    {
+                                        <span>@Html.ActionLink("Delete ", "Delete", "User", new { idPhoto = ViewBag.Photos[i + 1].IdPhoto, idUser = @user.IdUser, action = @"UserAccount", visitorId = ViewBag.VisitorId }, new { @class = "navbar-brand" })</span>
+                                    }
+                                    <span class="navbar-brand">@likes likes</span>
+                                    @*<span onclick="giveLike()" class="like">&#9829;</span>*@
+                                </div>
+                            }
+                        }
+                    </td>
+                </tr>
+                            }
+        </table>
+
 

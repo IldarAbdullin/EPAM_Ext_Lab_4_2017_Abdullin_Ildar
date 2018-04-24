@@ -23,6 +23,13 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 
+var like = document.querySelector('.like');
+var handler = false;
+var giveLike = function () {
+    handler = !handler;
+    like.style.color = handler ? 'red' : 'gray';
+}
+
 (function($) {
 
 $.extend($.fn, {
